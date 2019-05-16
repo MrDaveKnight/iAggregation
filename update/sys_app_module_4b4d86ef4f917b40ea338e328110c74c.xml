@@ -14,7 +14,7 @@
         <mobile_title>Properties</mobile_title>
         <mobile_view_name>Mobile</mobile_view_name>
         <name/>
-        <order>20</order>
+        <order>100</order>
         <override_menu_roles>false</override_menu_roles>
         <query>system_properties_ui.do?sysparm_title=iAggregation%20Properties&amp;sysparm_category=iAggregation%20Properties</query>
         <report/>
@@ -28,7 +28,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>4b4d86ef4f917b40ea338e328110c74c</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>Properties</sys_name>
         <sys_overrides/>
         <sys_package display_value="iAggregation" source="x_snc_iagg">e40a5da74f117b40ea338e328110c7c0</sys_package>
@@ -37,7 +37,7 @@
         <sys_scope display_value="iAggregation">e40a5da74f117b40ea338e328110c7c0</sys_scope>
         <sys_update_name>sys_app_module_4b4d86ef4f917b40ea338e328110c74c</sys_update_name>
         <sys_updated_by>dave.knight</sys_updated_by>
-        <sys_updated_on>2019-05-15 01:23:26</sys_updated_on>
+        <sys_updated_on>2019-05-16 02:39:41</sys_updated_on>
         <timeline_page/>
         <title>Properties</title>
         <uncancelable>false</uncancelable>
