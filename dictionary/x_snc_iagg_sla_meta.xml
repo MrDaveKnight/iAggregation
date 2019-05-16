@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="SLA Meta" max_length="40" name="x_snc_iagg_sla_meta" type="collection">
+        <element label="Id" max_length="40" name="id" type="string"/>
+        <element label="Instance" max_length="1024" name="instance" type="url"/>
+        <element label="Instance" max_length="40" name="instance_code" type="string"/>
+        <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
+        <element label="Task" max_length="80" name="task" type="workflow"/>
+        <index name="index">
+            <element name="sys_class_name"/>
+        </index>
+    </element>
+</database>

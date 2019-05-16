@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="source" table="x_snc_iagg_queue_tables" version="3">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value>Task</dependent_value>
+            <element>source</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Incident (incident)</label>
+            <language>en</language>
+            <name>x_snc_iagg_queue_tables</name>
+            <sequence>0</sequence>
+            <sys_created_by>dave.knight</sys_created_by>
+            <sys_created_on>2019-05-15 22:27:51</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>7b0fe2774f11bb40ea338e328110c784</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>dave.knight</sys_updated_by>
+            <sys_updated_on>2019-05-15 22:57:33</sys_updated_on>
+            <value>incident</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value>User</dependent_value>
+            <element>source</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>User (sys_user)</label>
+            <language>en</language>
+            <name>x_snc_iagg_queue_tables</name>
+            <sequence>1</sequence>
+            <sys_created_by>dave.knight</sys_created_by>
+            <sys_created_on>2019-05-15 22:56:51</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>f0b57abb4f11bb40ea338e328110c77f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>dave.knight</sys_updated_by>
+            <sys_updated_on>2019-05-15 22:56:51</sys_updated_on>
+            <value>sys_user</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value>SLA</dependent_value>
+            <element>source</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>SLA (task_sla)</label>
+            <language>en</language>
+            <name>x_snc_iagg_queue_tables</name>
+            <sequence>1</sequence>
+            <sys_created_by>dave.knight</sys_created_by>
+            <sys_created_on>2019-05-15 22:27:51</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>bf0fe2774f11bb40ea338e328110c785</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>dave.knight</sys_updated_by>
+            <sys_updated_on>2019-05-15 22:57:15</sys_updated_on>
+            <value>task_sla</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value>Task</dependent_value>
+            <element>source</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Problem (problem)</label>
+            <language>en</language>
+            <name>x_snc_iagg_queue_tables</name>
+            <sequence>2</sequence>
+            <sys_created_by>dave.knight</sys_created_by>
+            <sys_created_on>2019-05-15 22:27:51</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>ff0fe2774f11bb40ea338e328110c786</sys_id>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_updated_by>dave.knight</sys_updated_by>
+            <sys_updated_on>2019-05-15 22:58:29</sys_updated_on>
+            <value>problem</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value>Task</dependent_value>
+            <element>source</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Change (change_request)</label>
+            <language>en</language>
+            <name>x_snc_iagg_queue_tables</name>
+            <sequence>3</sequence>
+            <sys_created_by>dave.knight</sys_created_by>
+            <sys_created_on>2019-05-15 22:27:51</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>330fe2774f11bb40ea338e328110c788</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_updated_by>dave.knight</sys_updated_by>
+            <sys_updated_on>2019-05-15 22:58:13</sys_updated_on>
+            <value>change_request</value>
+        </sys_choice>
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>source</element>
+            <name>x_snc_iagg_queue_tables</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>dave.knight</sys_created_by>
+            <sys_created_on>2019-05-15 22:27:51</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>f30fe2774f11bb40ea338e328110c785</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>source</sys_name>
+            <sys_package display_value="iAggregation" source="x_snc_iagg">e40a5da74f117b40ea338e328110c7c0</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="iAggregation">e40a5da74f117b40ea338e328110c7c0</sys_scope>
+            <sys_update_name>sys_choice_x_snc_iagg_queue_tables_source</sys_update_name>
+            <sys_updated_by>dave.knight</sys_updated_by>
+            <sys_updated_on>2019-05-15 22:27:51</sys_updated_on>
+        </sys_choice_set>
+    </sys_choice>
+</record_update>

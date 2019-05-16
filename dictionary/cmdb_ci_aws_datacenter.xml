@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element extends="cmdb_ci_logical_datacenter" label="AWS Datacenter" max_length="40" name="cmdb_ci_aws_datacenter" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="Source" max_length="1024" name="x_snc_iagg_source" read_only="true" type="url"/>
+    </element>
+</database>

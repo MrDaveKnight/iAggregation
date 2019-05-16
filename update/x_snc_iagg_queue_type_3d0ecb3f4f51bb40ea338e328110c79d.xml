@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="x_snc_iagg_queue_type">
+    <x_snc_iagg_queue_type action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <order>100</order>
+        <source_table>task_sla</source_table>
+        <sys_class_name>x_snc_iagg_queue_type</sys_class_name>
+        <sys_created_by>dave.knight</sys_created_by>
+        <sys_created_on>2019-05-16 00:43:29</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>3d0ecb3f4f51bb40ea338e328110c79d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>100</sys_name>
+        <sys_package display_value="iAggregation" source="x_snc_iagg">e40a5da74f117b40ea338e328110c7c0</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="iAggregation">e40a5da74f117b40ea338e328110c7c0</sys_scope>
+        <sys_update_name>x_snc_iagg_queue_type_3d0ecb3f4f51bb40ea338e328110c79d</sys_update_name>
+        <sys_updated_by>dave.knight</sys_updated_by>
+        <sys_updated_on>2019-05-16 00:43:29</sys_updated_on>
+        <type>task_sla</type>
+    </x_snc_iagg_queue_type>
+</record_update>

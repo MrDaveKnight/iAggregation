@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="update_synch=true" extends="dl_matcher" label="Queue Type Lookup" max_length="40" name="x_snc_iagg_queue_type" type="collection">
+        <element label="Source table" max_length="40" name="source_table" type="string"/>
+        <element label="Type" max_length="40" name="type" type="string"/>
+    </element>
+</database>

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_snc_iagg.Utils</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>Utils</name>
+        <script><![CDATA[var Utils = Class.create();
+Utils.prototype = {
+	initialize: function() {
+	},
+	
+	getTargetRefQual: function (current) {
+		// Current is a Queue Table record
+		
+		if (current.type == "task") {
+			return "super_class=x_snc_iagg_task_meta";
+		}
+		else if (current.type == "task_sla") {
+			return "super_class=x_snc_iagg_sla_meta";
+		}
+		else if (current.type == "sys_user") {
+			return "super_class=x_snc_iagg_user_meta";
+		}
+		else {
+			gs.warn("No type in Queue Table record.");
+			return "";
+			//return "super_class=superman"
+		}
+	},
+	
+	cacheSpec: function(current) {
+		
+		var specString = "nada";
+		
+		try {
+			
+			var spec = {};
+			
+			var gr = new GlideRecord("x_snc_iagg_meta_table");
+			gr.addQuery("source.name", current.sys_class_name);
+			gr.query();
+			if (gr.next()) {
+				
+				spec.type = gr.type.toString();
+				spec.instanceUrl = "https://" + gs.getProperty('instance_name') + ".service-now.com";
+				spec.instanceCode = gs.getProperty("x_snc_iagg.instance_suffix");
+				spec.target = gr.target.name.toString();
+				spec.fields = {}; // Field map for sync: source field name -> target field name
+				
+				var field = new GlideRecord("sys_dictionary");
+				field.addEncodedQuery("name=" + spec.target + "^element!=NULL^elementNOT LIKEsys_");
+				field.query();
+				while (field.next()) {
+					
+					var targetFieldName = fields.element.toString();
+					
+					if (current[targetFieldName]) {
+						spec.fields[targetFieldName] = targetFieldName; // source and target field names match
+					}
+					else {
+						
+						// Look for a field in the source table that matches the target field,
+						// only with a prefix such as u_ or x_...
+						for (var sourceFieldName in current) {
+							
+							if (current.hasOwnProperty(sourceFieldName)) {
+								var index = sourceFieldName.indexOf(targetFieldName);
+								if (index > -1) {
+									
+									var sourceFieldLength = sourceFieldName.length;
+									var targetFieldLength = targetFieldName.length;
+									
+									// Make sure the only difference is prefix (for u_ or x_....)
+									if (sourceFieldLength - targetFieldLength == index) {
+										spec.fields[sourceFieldName] = targetFieldName;
+									}
+								}
+							}
+						}
+						
+						spec.fields["u_" + fields.element.toString()] = field.element.toString();
+					}
+					
+				}
+				specString = new JSON.encode(spec);
+			}
+			else {
+				specString = "nada";
+			}
+			gs.getSession().putClientData(current.sys_class_name.toString(), specString);
+		}
+		catch (e) {
+			gs.error("Failed to initialize cache for " + current.sys_class_name + " : " + e);
+			specString = "nada";
+			gs.getSession().putClientData(current.sys_class_name.toString(), specString);
+		}
+		
+		return specString;
+	},
+	
+	// 
+	// The Meta functions synchronize the metadata with the source data
+	// They should be called from asynchronous business rules if you add any
+	//
+	
+	insertMeta: function(current) {
+		
+		// First look for cached Meta Spec
+		// The source table is the key
+		// Will give us a map of what fields to synchronize over to the target table
+		var specString = gs.getSession().getClientData(current.sys_class_name);
+		var spec = 0;
+		
+		// If no cache, initialize it
+		if (!specString) {
+			specString = this.cacheSpec(current);
+		}
+		
+		if (specString == "nada") {
+			return; // We are not aggregating this table
+		}
+		else {
+			spec = new JSON.decode(specString);
+		}
+		
+		try {
+			
+			var targetGR = new GlideRecord(spec.target);
+			
+			// Copy common fields
+			targetGR.id = current.sys_id;
+			targetGR.instance = spec.instanceUrl;
+			
+			// Copy type specific but common fields
+			if (spec.type == "Task") {
+				targetGR.table = current.sys_class_name.toString();
+				var globalNumber = spec.instanceCode + "_" + current.number.toString();
+				targetGR.number = globalNumber;
+				targetGR.display = globalNumber;
+			}
+			else if (spec.type == "User") {
+				targetGR.instance_code = spec.instanceCode;
+				targetGR.name = current.name.toString();
+			}
+			else if (spec.type == "SLA") {
+				targetGR.instance_code = spec.instanceCode;
+				targetGR.task = current.task.getDisplayValue();
+			}
+			else {
+				throw "Bogus spec type";
+			}
+			
+			// Copy configured (customized) fields
+			// These will be defined in the table that extends the base Meta table
+			for (var key in spec.fields) {
+				targetGR[spec.fields[key]] = current[key];
+			}
+			
+			targetGR.insert();
+		}
+		catch (e) {
+			gs.error("Failed to insert metadata for " + current.sys_class_name + " : " + e);
+		}
+		
+	},
+	
+	updateMeta: function(current) {
+		
+		try {
+			
+			// First look for cached Meta Spec
+			// The source table is the key
+			// Will give us a map of what fields to synchronize over to the target table
+			var specString = gs.getSession().getClientData(current.sys_class_name);
+			var spec = 0;
+			
+			if (specString == "nada") {
+				return; // We are not aggregating this table
+			}
+			else if (!specString) {
+				throw "missing cache spec";
+			}
+			else {
+				spec = new JSON.decode(specString);
+			}
+			
+			
+			var targetGR = new GlideRecord(spec.target);
+			targetGR.addQuery("id", current.sys_id);
+			targetGR.query();
+			if (!targetGR.hasNext()) {
+				throw "missing target metadata record";
+			}
+			targetGR.next();
+			
+			var shouldUpdate = false;
+			
+			// Copy configured (customized) fields
+			// These will be defined in the table that extends the base Meta table
+			for (var key in spec.fields) {
+				if (targetGR[spec.fields[key]] != current[key]) {
+					shouldUpdate = true;
+					targetGR[spec.fields[key]] = current[key];
+				}
+			}
+			
+			if (shouldUpdate) {
+				// I think GlideRecord is smart enough not to update if nothing changed, but just in case.
+				// We don't want any unnecessary replication
+				targetGR.update();
+			}
+			
+		}
+		catch (e) {
+			gs.error("Failed to update metadata for " + current.sys_class_name + " : " + e);
+		}
+		
+	},
+	
+	deleteMeta: function(current) {
+		
+		try {
+			
+			// First look for cached Meta Spec
+			// The source table is the key
+			// Will give us a map of what fields to synchronize over to the target table
+			var specString = gs.getSession().getClientData(current.sys_class_name);
+			var spec = 0;
+			
+			if (specString == "nada") {
+				return; // We are not aggregating this table
+			}
+			else if (!specString) {
+				throw "missing cache spec";
+			}
+			else {
+				spec = new JSON.decode(specString);
+			}
+			
+			
+			var targetGR = new GlideRecord(spec.target);
+			targetGR.addQuery("id", current.sys_id);
+			targetGR.query();
+			if (targetGR.next()) {
+				targetGR.deleteRecord();
+			}
+			
+			var shouldUpdate = false;
+			
+			// Copy configured (customized) fields
+			// These will be defined in the table that extends the base Meta table
+			for (var key in spec.fields) {
+				if (targetGR[spec.fields[key]] != current[key]) {
+					shouldUpdate = true;
+					targetGR[spec.fields[key]] = current[key];
+				}
+			}
+			
+			if (shouldUpdate) {
+				// I think GlideRecord is smart enough not to update if nothing changed, but just in case.
+				// We don't want any unnecessary replication
+				targetGR.update();
+			}
+			
+		}
+		catch (e) {
+			gs.error("Failed to update metadata for " + current.sys_class_name + " : " + e);
+		}
+		
+	},
+	
+	insertProxyUrl: function (current) {
+		// Should only be called from a >> before << business rule (to get the update)
+		// Should only be used on the following tables and their descendants/
+		// - cmdb_ci
+		
+		try {
+			var url = "https://" + gs.getProperty('instance_name') + ".service-now.com/" + current.sys_class_name.toString() + ".do%3Fsys_id%3D" + current.sys_id.toString();
+			
+			current.x_snc_iagg_source = url;
+			
+		}
+		catch (e) {
+			gs.error("Failed to create proxy URL back to sourced. " + e);
+		}
+	},
+	
+	type: 'Utils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>dave.knight</sys_created_by>
+        <sys_created_on>2019-05-15 17:01:49</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>eef430ff4f997b40ea338e328110c7c0</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>Utils</sys_name>
+        <sys_package display_value="iAggregation" source="x_snc_iagg">e40a5da74f117b40ea338e328110c7c0</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="iAggregation">e40a5da74f117b40ea338e328110c7c0</sys_scope>
+        <sys_update_name>sys_script_include_eef430ff4f997b40ea338e328110c7c0</sys_update_name>
+        <sys_updated_by>dave.knight</sys_updated_by>
+        <sys_updated_on>2019-05-16 01:04:17</sys_updated_on>
+    </sys_script_include>
+</record_update>
