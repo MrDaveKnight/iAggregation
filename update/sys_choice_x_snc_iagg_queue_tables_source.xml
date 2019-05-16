@@ -20,6 +20,25 @@
             <value>incident</value>
         </sys_choice>
         <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value>Task</dependent_value>
+            <element>source</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Incident (Fru incident)</label>
+            <language>en</language>
+            <name>x_snc_iagg_queue_tables</name>
+            <sequence>0</sequence>
+            <sys_created_by>dave.knight</sys_created_by>
+            <sys_created_on>2019-05-16 13:56:59</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>1ab3c2c84fa9bb40ea338e328110c700</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>dave.knight</sys_updated_by>
+            <sys_updated_on>2019-05-16 13:56:59</sys_updated_on>
+            <value>x_fru_inc_incident</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
             <dependent_value>User</dependent_value>
             <element>source</element>
             <hint/>

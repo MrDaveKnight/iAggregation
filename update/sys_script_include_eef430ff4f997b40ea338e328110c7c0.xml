@@ -35,19 +35,21 @@ Utils.prototype = {
 		
 		var specString = "nada";
 		
+		
 		try {
 			
+			var className = current.getTableName();
 			var spec = {};
 			
-			var gr = new GlideRecord("x_snc_iagg_meta_table");
-			gr.addQuery("source.name", current.sys_class_name);
+			var gr = new GlideRecord("x_snc_iagg_queue_tables");
+			gr.addQuery("source", className);
 			gr.query();
 			if (gr.next()) {
 				
 				spec.type = gr.type.toString();
 				spec.instanceUrl = "https://" + gs.getProperty('instance_name') + ".service-now.com";
 				spec.instanceCode = gs.getProperty("x_snc_iagg.instance_suffix");
-				spec.target = gr.target.name.toString();
+				spec.target = gr.meta.name.toString();
 				spec.fields = {}; // Field map for sync: source field name -> target field name
 				
 				var field = new GlideRecord("sys_dictionary");
@@ -55,7 +57,7 @@ Utils.prototype = {
 				field.query();
 				while (field.next()) {
 					
-					var targetFieldName = fields.element.toString();
+					var targetFieldName = field.element.toString();
 					
 					if (current[targetFieldName]) {
 						spec.fields[targetFieldName] = targetFieldName; // source and target field names match
@@ -81,52 +83,58 @@ Utils.prototype = {
 							}
 						}
 						
-						spec.fields["u_" + fields.element.toString()] = field.element.toString();
+						spec.fields["u_" + field.element.toString()] = field.element.toString();
 					}
 					
 				}
-				specString = new JSON.encode(spec);
+				specString = new global.JSON().encode(spec);
 			}
 			else {
 				specString = "nada";
 			}
-			gs.getSession().putClientData(current.sys_class_name.toString(), specString);
+			var s = gs.getSession();
+			s.putClientData(className, specString);
 		}
 		catch (e) {
 			gs.error("Failed to initialize cache for " + current.sys_class_name + " : " + e);
 			specString = "nada";
-			gs.getSession().putClientData(current.sys_class_name.toString(), specString);
+			gs.getSession().putClientData(className, specString);
 		}
 		
 		return specString;
 	},
 	
-	// 
+	//
 	// The Meta functions synchronize the metadata with the source data
 	// They should be called from asynchronous business rules if you add any
 	//
 	
 	insertMeta: function(current) {
 		
-		// First look for cached Meta Spec
-		// The source table is the key
-		// Will give us a map of what fields to synchronize over to the target table
-		var specString = gs.getSession().getClientData(current.sys_class_name);
-		var spec = 0;
-		
-		// If no cache, initialize it
-		if (!specString) {
-			specString = this.cacheSpec(current);
-		}
-		
-		if (specString == "nada") {
-			return; // We are not aggregating this table
-		}
-		else {
-			spec = new JSON.decode(specString);
-		}
+		var className = current.getTableName();
 		
 		try {
+			
+			// First look for cached Meta Spec
+			// The source table is the key
+			// Will give us a map of what fields to synchronize over to the target table
+			var session = gs.getSession();
+			var specString = session.getClientData(className);
+			var spec = 0;
+			
+			// If no cache, initialize it
+			if (!specString) {
+				specString = this.cacheSpec(current);
+			}
+			
+			if (specString == "nada") {
+				return; // We are not aggregating this table
+			}
+			else {
+				spec = new global.JSON().decode(specString);
+			}
+			
+			
 			
 			var targetGR = new GlideRecord(spec.target);
 			
@@ -135,17 +143,17 @@ Utils.prototype = {
 			targetGR.instance = spec.instanceUrl;
 			
 			// Copy type specific but common fields
-			if (spec.type == "Task") {
+			if (spec.type == "task") {
 				targetGR.table = current.sys_class_name.toString();
 				var globalNumber = spec.instanceCode + "_" + current.number.toString();
 				targetGR.number = globalNumber;
 				targetGR.display = globalNumber;
 			}
-			else if (spec.type == "User") {
+			else if (spec.type == "sys_user") {
 				targetGR.instance_code = spec.instanceCode;
 				targetGR.name = current.name.toString();
 			}
-			else if (spec.type == "SLA") {
+			else if (spec.type == "task_sla") {
 				targetGR.instance_code = spec.instanceCode;
 				targetGR.task = current.task.getDisplayValue();
 			}
@@ -174,7 +182,7 @@ Utils.prototype = {
 			// First look for cached Meta Spec
 			// The source table is the key
 			// Will give us a map of what fields to synchronize over to the target table
-			var specString = gs.getSession().getClientData(current.sys_class_name);
+			var specString = gs.getSession().getClientData(current.getTableName());
 			var spec = 0;
 			
 			if (specString == "nada") {
@@ -184,7 +192,7 @@ Utils.prototype = {
 				throw "missing cache spec";
 			}
 			else {
-				spec = new JSON.decode(specString);
+				spec = new global.JSON().decode(specString);
 			}
 			
 			
@@ -215,7 +223,7 @@ Utils.prototype = {
 			
 		}
 		catch (e) {
-			gs.error("Failed to update metadata for " + current.sys_class_name + " : " + e);
+			gs.error("Failed to update metadata for " + current.getTableName() + " : " + e);
 		}
 		
 	},
@@ -227,7 +235,7 @@ Utils.prototype = {
 			// First look for cached Meta Spec
 			// The source table is the key
 			// Will give us a map of what fields to synchronize over to the target table
-			var specString = gs.getSession().getClientData(current.sys_class_name);
+			var specString = gs.getSession().getClientData(current.getTableName());
 			var spec = 0;
 			
 			if (specString == "nada") {
@@ -237,7 +245,7 @@ Utils.prototype = {
 				throw "missing cache spec";
 			}
 			else {
-				spec = new JSON.decode(specString);
+				spec = new global.JSON().decode(specString);
 			}
 			
 			
@@ -267,7 +275,7 @@ Utils.prototype = {
 			
 		}
 		catch (e) {
-			gs.error("Failed to update metadata for " + current.sys_class_name + " : " + e);
+			gs.error("Failed to delete metadata for " + current.getTableName() + " : " + e);
 		}
 		
 	},
@@ -279,7 +287,7 @@ Utils.prototype = {
         <sys_created_on>2019-05-15 17:01:49</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>eef430ff4f997b40ea338e328110c7c0</sys_id>
-        <sys_mod_count>7</sys_mod_count>
+        <sys_mod_count>24</sys_mod_count>
         <sys_name>Utils</sys_name>
         <sys_package display_value="iAggregation Base" source="x_snc_iagg">e40a5da74f117b40ea338e328110c7c0</sys_package>
         <sys_policy>read</sys_policy>
@@ -287,6 +295,6 @@ Utils.prototype = {
         <sys_scope display_value="iAggregation Base">e40a5da74f117b40ea338e328110c7c0</sys_scope>
         <sys_update_name>sys_script_include_eef430ff4f997b40ea338e328110c7c0</sys_update_name>
         <sys_updated_by>dave.knight</sys_updated_by>
-        <sys_updated_on>2019-05-16 03:33:37</sys_updated_on>
+        <sys_updated_on>2019-05-16 14:35:00</sys_updated_on>
     </sys_script_include>
 </record_update>
