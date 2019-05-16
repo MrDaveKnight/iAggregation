@@ -272,22 +272,6 @@ Utils.prototype = {
 		
 	},
 	
-	insertProxyUrl: function (current) {
-		// Should only be called from a >> before << business rule (to get the update)
-		// Should only be used on the following tables and their descendants/
-		// - cmdb_ci
-		
-		try {
-			var url = "https://" + gs.getProperty('instance_name') + ".service-now.com/" + current.sys_class_name.toString() + ".do%3Fsys_id%3D" + current.sys_id.toString();
-			
-			current.x_snc_iagg_source = url;
-			
-		}
-		catch (e) {
-			gs.error("Failed to create proxy URL back to sourced. " + e);
-		}
-	},
-	
 	type: 'Utils'
 };]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
@@ -295,7 +279,7 @@ Utils.prototype = {
         <sys_created_on>2019-05-15 17:01:49</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>eef430ff4f997b40ea338e328110c7c0</sys_id>
-        <sys_mod_count>6</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>Utils</sys_name>
         <sys_package display_value="iAggregation" source="x_snc_iagg">e40a5da74f117b40ea338e328110c7c0</sys_package>
         <sys_policy>read</sys_policy>
@@ -303,6 +287,6 @@ Utils.prototype = {
         <sys_scope display_value="iAggregation">e40a5da74f117b40ea338e328110c7c0</sys_scope>
         <sys_update_name>sys_script_include_eef430ff4f997b40ea338e328110c7c0</sys_update_name>
         <sys_updated_by>dave.knight</sys_updated_by>
-        <sys_updated_on>2019-05-16 01:04:17</sys_updated_on>
+        <sys_updated_on>2019-05-16 03:33:37</sys_updated_on>
     </sys_script_include>
 </record_update>

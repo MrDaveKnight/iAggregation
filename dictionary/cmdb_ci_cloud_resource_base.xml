@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><database>
-    <element extends="cmdb_ci" label="Cloud Resource Base" max_length="40" name="cmdb_ci_cloud_resource_base" type="collection">
-        <element attributes="edge_encryption_enabled=true" label="Source" max_length="1024" name="x_snc_iagg_source" read_only="true" type="url"/>
-    </element>
-</database>
