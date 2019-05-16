@@ -4,7 +4,6 @@
         <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
         <element choice="1" label="Source" mandatory="true" max_length="40" name="source" type="choice">
             <choice>
-                <element dependent_value="Task" inactive_on_update="false" label="Incident (Fru incident)" sequence="0" value="x_fru_inc_incident"/>
                 <element dependent_value="Task" inactive_on_update="false" label="Incident (incident)" sequence="0" value="incident"/>
                 <element dependent_value="SLA" inactive_on_update="false" label="SLA (task_sla)" sequence="1" value="task_sla"/>
                 <element dependent_value="User" inactive_on_update="false" label="User (sys_user)" sequence="1" value="sys_user"/>

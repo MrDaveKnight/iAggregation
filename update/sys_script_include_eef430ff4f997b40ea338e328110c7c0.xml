@@ -78,14 +78,12 @@ Utils.prototype = {
 									// Make sure the only difference is prefix (for u_ or x_....)
 									if (sourceFieldLength - targetFieldLength == index) {
 										spec.fields[sourceFieldName] = targetFieldName;
+										break;
 									}
 								}
 							}
 						}
-						
-						spec.fields["u_" + field.element.toString()] = field.element.toString();
-					}
-					
+					}		
 				}
 				specString = new global.JSON().encode(spec);
 			}
@@ -287,7 +285,7 @@ Utils.prototype = {
         <sys_created_on>2019-05-15 17:01:49</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>eef430ff4f997b40ea338e328110c7c0</sys_id>
-        <sys_mod_count>25</sys_mod_count>
+        <sys_mod_count>26</sys_mod_count>
         <sys_name>Utils</sys_name>
         <sys_package display_value="iAggregation Base" source="x_snc_iagg">e40a5da74f117b40ea338e328110c7c0</sys_package>
         <sys_policy>read</sys_policy>
@@ -295,6 +293,6 @@ Utils.prototype = {
         <sys_scope display_value="iAggregation Base">e40a5da74f117b40ea338e328110c7c0</sys_scope>
         <sys_update_name>sys_script_include_eef430ff4f997b40ea338e328110c7c0</sys_update_name>
         <sys_updated_by>dave.knight</sys_updated_by>
-        <sys_updated_on>2019-05-16 14:48:13</sys_updated_on>
+        <sys_updated_on>2019-05-16 15:15:07</sys_updated_on>
     </sys_script_include>
 </record_update>

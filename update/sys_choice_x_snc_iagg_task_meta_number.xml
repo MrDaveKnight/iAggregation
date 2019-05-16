@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_choice action="INSERT_OR_UPDATE" field="number" table="x_snc_iagg_task_meta" version="3">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>number</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Display me</label>
+            <language>en</language>
+            <name>x_snc_iagg_task_meta</name>
+            <sequence>0</sequence>
+            <sys_created_by>dave.knight</sys_created_by>
+            <sys_created_on>2019-05-16 17:10:53</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>2e1072804fadbb40ea338e328110c756</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>dave.knight</sys_updated_by>
+            <sys_updated_on>2019-05-16 17:10:53</sys_updated_on>
+            <value>Display me</value>
+        </sys_choice>
+        <sys_choice_set action="INSERT_OR_UPDATE">
+            <element>number</element>
+            <name>x_snc_iagg_task_meta</name>
+            <sys_class_name>sys_choice_set</sys_class_name>
+            <sys_created_by>dave.knight</sys_created_by>
+            <sys_created_on>2019-05-16 17:10:53</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>e61072804fadbb40ea338e328110c757</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>number</sys_name>
+            <sys_package display_value="iAggregation Base" source="x_snc_iagg">e40a5da74f117b40ea338e328110c7c0</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="iAggregation Base">e40a5da74f117b40ea338e328110c7c0</sys_scope>
+            <sys_update_name>sys_choice_x_snc_iagg_task_meta_number</sys_update_name>
+            <sys_updated_by>dave.knight</sys_updated_by>
+            <sys_updated_on>2019-05-16 17:10:53</sys_updated_on>
+        </sys_choice_set>
+    </sys_choice>
+</record_update>

@@ -3,7 +3,11 @@
         <element label="Display" max_length="40" name="display" type="string"/>
         <element label="Id" max_length="40" name="id" type="string"/>
         <element label="Instance" max_length="1024" name="instance" type="url"/>
-        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// For some reason I can't update a scoped workflow field from a different scope. Can update all other&#13;&#10;&#9;// fields, but not the workflow field. So, I'm calculating it from something I can set.&#13;&#10;&#9;return current.display.toString();  &#13;&#10;&#13;&#10;})(current);" label="Number" max_length="80" name="number" type="workflow" virtual="true"/>
+        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// For some reason I can't update a scoped workflow field from a different scope. Can update all other&#13;&#10;&#9;// fields, but not the workflow field. So, I'm calculating it from something I can set.&#13;&#10;&#9;return current.display.toString();  &#13;&#10;&#13;&#10;})(current);" choice="1" label="Number" max_length="80" name="number" type="workflow" virtual="true">
+            <choice>
+                <element inactive_on_update="false" label="Display me" sequence="0" value="Display me"/>
+            </choice>
+        </element>
         <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
         <element label="Table" max_length="40" name="table" type="string"/>
         <index name="index">
