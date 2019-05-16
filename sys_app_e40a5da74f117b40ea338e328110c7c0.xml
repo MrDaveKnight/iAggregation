@@ -8,7 +8,7 @@
         <license_model>none</license_model>
         <logo/>
         <menu display_value="iAggregation">ec0a91eb4f117b40ea338e328110c719</menu>
-        <name>iAggregation</name>
+        <name>iAggregation Base</name>
         <private>false</private>
         <restrict_table_access>false</restrict_table_access>
         <runtime_access_tracking/>
@@ -23,9 +23,9 @@
         <sys_created_by>dave.knight</sys_created_by>
         <sys_created_on>2019-05-14 21:37:46</sys_created_on>
         <sys_id>e40a5da74f117b40ea338e328110c7c0</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_updated_by>dave.knight</sys_updated_by>
-        <sys_updated_on>2019-05-14 21:38:45</sys_updated_on>
+        <sys_updated_on>2019-05-16 03:37:00</sys_updated_on>
         <template/>
         <trackable>true</trackable>
         <user_role display_value="x_snc_iagg.user" name="x_snc_iagg.user">600a91eb4f117b40ea338e328110c71d</user_role>

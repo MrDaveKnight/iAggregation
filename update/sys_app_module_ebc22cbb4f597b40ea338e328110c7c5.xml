@@ -31,10 +31,10 @@
         <sys_mod_count>2</sys_mod_count>
         <sys_name>User Meta</sys_name>
         <sys_overrides/>
-        <sys_package display_value="iAggregation" source="x_snc_iagg">e40a5da74f117b40ea338e328110c7c0</sys_package>
+        <sys_package display_value="iAggregation Base" source="x_snc_iagg">e40a5da74f117b40ea338e328110c7c0</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
-        <sys_scope display_value="iAggregation">e40a5da74f117b40ea338e328110c7c0</sys_scope>
+        <sys_scope display_value="iAggregation Base">e40a5da74f117b40ea338e328110c7c0</sys_scope>
         <sys_update_name>sys_app_module_ebc22cbb4f597b40ea338e328110c7c5</sys_update_name>
         <sys_updated_by>dave.knight</sys_updated_by>
         <sys_updated_on>2019-05-16 02:39:22</sys_updated_on>

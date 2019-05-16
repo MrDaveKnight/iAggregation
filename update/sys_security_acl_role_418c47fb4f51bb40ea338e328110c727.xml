@@ -7,10 +7,10 @@
         <sys_id>418c47fb4f51bb40ea338e328110c727</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_snc_iagg_queue_type.x_snc_iagg.user</sys_name>
-        <sys_package display_value="iAggregation" source="x_snc_iagg">e40a5da74f117b40ea338e328110c7c0</sys_package>
+        <sys_package display_value="iAggregation Base" source="x_snc_iagg">e40a5da74f117b40ea338e328110c7c0</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
-        <sys_scope display_value="iAggregation">e40a5da74f117b40ea338e328110c7c0</sys_scope>
+        <sys_scope display_value="iAggregation Base">e40a5da74f117b40ea338e328110c7c0</sys_scope>
         <sys_security_acl display_value="x_snc_iagg_queue_type">c98c47fb4f51bb40ea338e328110c722</sys_security_acl>
         <sys_update_name>sys_security_acl_role_418c47fb4f51bb40ea338e328110c727</sys_update_name>
         <sys_updated_by>dave.knight</sys_updated_by>
