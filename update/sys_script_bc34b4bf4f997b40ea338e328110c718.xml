@@ -29,7 +29,7 @@
         <role_conditions/>
         <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
 
-	// Add your code here
+	new Utils.deleteMeta(current);
 
 })(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
@@ -39,7 +39,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>bc34b4bf4f997b40ea338e328110c718</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>Delete task meta</sys_name>
         <sys_overrides/>
         <sys_package display_value="iAggregation" source="x_snc_iagg">e40a5da74f117b40ea338e328110c7c0</sys_package>
@@ -48,9 +48,9 @@
         <sys_scope display_value="iAggregation">e40a5da74f117b40ea338e328110c7c0</sys_scope>
         <sys_update_name>sys_script_bc34b4bf4f997b40ea338e328110c718</sys_update_name>
         <sys_updated_by>dave.knight</sys_updated_by>
-        <sys_updated_on>2019-05-15 13:31:04</sys_updated_on>
+        <sys_updated_on>2019-05-16 02:24:05</sys_updated_on>
         <template/>
-        <when>async</when>
+        <when>after</when>
     </sys_script>
     <sys_translated_text action="delete_multiple" query="documentkey=bc34b4bf4f997b40ea338e328110c718"/>
 </record_update>
