@@ -7,8 +7,9 @@
         <audit>false</audit>
         <calculation><![CDATA[(function calculatedFieldValue(current) {
 
-	// Add your code here
-	return '';  // return the calculated value
+	// For some reason I can't update a scoped workflow field from a different scope. Can update all other
+	// fields, but not the workflow field. So, I'm calculating it from something I can set.
+	return current.display.toString();  
 
 })(current);]]></calculation>
         <choice/>
@@ -55,7 +56,7 @@
         <sys_created_on>2019-05-15 12:12:52</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>f7efd03b4f597b40ea338e328110c7b3</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>1</sys_mod_count>
         <sys_name>Number</sys_name>
         <sys_package display_value="iAggregation Base" source="x_snc_iagg">e40a5da74f117b40ea338e328110c7c0</sys_package>
         <sys_policy/>
@@ -63,14 +64,14 @@
         <sys_scope display_value="iAggregation Base">e40a5da74f117b40ea338e328110c7c0</sys_scope>
         <sys_update_name>sys_dictionary_x_snc_iagg_task_meta_number</sys_update_name>
         <sys_updated_by>dave.knight</sys_updated_by>
-        <sys_updated_on>2019-05-15 12:12:52</sys_updated_on>
+        <sys_updated_on>2019-05-16 14:51:23</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
         <use_dependent_field>false</use_dependent_field>
         <use_dynamic_default>false</use_dynamic_default>
         <use_reference_qualifier>simple</use_reference_qualifier>
-        <virtual>false</virtual>
+        <virtual>true</virtual>
         <widget/>
         <write_roles/>
         <xml_view>false</xml_view>
