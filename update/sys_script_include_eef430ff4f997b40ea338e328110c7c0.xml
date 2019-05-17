@@ -12,22 +12,27 @@ Utils.prototype = {
 	initialize: function() {
 	},
 	
-	getTargetRefQual: function (current) {
-		// Current is a Queue Table record
+	getTargetRefQual: function (source) {
+		// Must keep this in synch with the choices available in the Queue Tables specification record,
+		// You should also keep it in synch with the Queue Type Lookup definition. I don't actually 
+		// use it for anything now, other than reminding the admin of the "base" types the processing
+		// revolves around
+
 		
-		if (current.type == "task") {
-			return "super_class=x_snc_iagg_task_meta";
+		// Current is a Queue Table record
+		// BTW, the hardcoded sys_ids below are FINE! The objets they refer to are in this scope/update_set!
+		if (source == "incident" || source == "problem" || source == "change_request") {
+			return "super_class=2e3e94f74f597b40ea338e328110c799^EQ"; // x_snc_iagg_task_meta 
 		}
-		else if (current.type == "task_sla") {
-			return "super_class=x_snc_iagg_sla_meta";
+		else if (source == "task_sla") {
+			return "super_class=180f1f0c4f21fb40ea338e328110c7c1^EQ"; // x_snc_iagg_q_task_sla
 		}
-		else if (current.type == "sys_user") {
-			return "super_class=x_snc_iagg_user_meta";
+		else if (source == "sys_user") {
+			return "super_class=e5722cbb4f597b40ea338e328110c7af^EQ"; // x_snc_iagg_user_meta
 		}
 		else {
 			gs.warn("No type in Queue Table record.");
-			return "";
-			//return "super_class=superman"
+			return "super_class=superman^EQ"; // Block all selections till they pick a valid type
 		}
 	},
 	
@@ -46,7 +51,7 @@ Utils.prototype = {
 			gr.query();
 			if (gr.next()) {
 				
-				spec.type = gr.type.toString();
+				spec.type = gr.base_classification.toString();
 				spec.instanceUrl = "https://" + gs.getProperty('instance_name') + ".service-now.com";
 				spec.instanceCode = gs.getProperty("x_snc_iagg.instance_suffix");
 				spec.target = gr.meta.name.toString();
@@ -94,7 +99,7 @@ Utils.prototype = {
 			s.putClientData(className, specString);
 		}
 		catch (e) {
-			gs.error("Failed to initialize cache for " + current.sys_class_name + " : " + e);
+			gs.error("Failed to initialize cache for " + className + " : " + e);
 			specString = "nada";
 			gs.getSession().putClientData(className, specString);
 		}
@@ -285,7 +290,7 @@ Utils.prototype = {
         <sys_created_on>2019-05-15 17:01:49</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>eef430ff4f997b40ea338e328110c7c0</sys_id>
-        <sys_mod_count>26</sys_mod_count>
+        <sys_mod_count>42</sys_mod_count>
         <sys_name>Utils</sys_name>
         <sys_package display_value="iAggregation Base" source="x_snc_iagg">e40a5da74f117b40ea338e328110c7c0</sys_package>
         <sys_policy>read</sys_policy>
@@ -293,6 +298,6 @@ Utils.prototype = {
         <sys_scope display_value="iAggregation Base">e40a5da74f117b40ea338e328110c7c0</sys_scope>
         <sys_update_name>sys_script_include_eef430ff4f997b40ea338e328110c7c0</sys_update_name>
         <sys_updated_by>dave.knight</sys_updated_by>
-        <sys_updated_on>2019-05-16 15:15:07</sys_updated_on>
+        <sys_updated_on>2019-05-16 23:57:16</sys_updated_on>
     </sys_script_include>
 </record_update>

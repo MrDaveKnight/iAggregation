@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update>
-    <sys_dictionary action="INSERT_OR_UPDATE" element="type" table="x_snc_iagg_queue_tables">
+    <sys_dictionary action="INSERT_OR_UPDATE" element="base_classification" table="x_snc_iagg_queue_tables">
         <active>true</active>
         <array>false</array>
         <array_denormalized>false</array_denormalized>
         <attributes/>
         <audit>false</audit>
-        <calculation><![CDATA[(function calculatedFieldValue(current) { 
-	
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
 })(current);]]></calculation>
         <choice>1</choice>
         <choice_field/>
@@ -24,7 +27,7 @@
         <dynamic_creation_script/>
         <dynamic_default_value/>
         <dynamic_ref_qual/>
-        <element>type</element>
+        <element>base_classification</element>
         <element_reference>false</element_reference>
         <foreign_database/>
         <function_definition/>
@@ -49,18 +52,18 @@
         <staged>false</staged>
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>dave.knight</sys_created_by>
-        <sys_created_on>2019-05-15 22:24:07</sys_created_on>
+        <sys_created_on>2019-05-16 22:29:22</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
-        <sys_id>02fdaab34f11bb40ea338e328110c73c</sys_id>
-        <sys_mod_count>6</sys_mod_count>
+        <sys_id>8fc8f7044fa1fb40ea338e328110c79f</sys_id>
+        <sys_mod_count>3</sys_mod_count>
         <sys_name>Type</sys_name>
         <sys_package display_value="iAggregation Base" source="x_snc_iagg">e40a5da74f117b40ea338e328110c7c0</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="iAggregation Base">e40a5da74f117b40ea338e328110c7c0</sys_scope>
-        <sys_update_name>sys_dictionary_x_snc_iagg_queue_tables_type</sys_update_name>
+        <sys_update_name>sys_dictionary_x_snc_iagg_queue_tables_base_classification</sys_update_name>
         <sys_updated_by>dave.knight</sys_updated_by>
-        <sys_updated_on>2019-05-16 00:51:47</sys_updated_on>
+        <sys_updated_on>2019-05-16 23:35:59</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

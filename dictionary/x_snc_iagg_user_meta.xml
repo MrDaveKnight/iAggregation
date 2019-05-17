@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element label="User Meta" max_length="40" name="x_snc_iagg_user_meta" type="collection">
-        <element label="Display" max_length="40" name="display" type="string"/>
-        <element label="Id" max_length="40" name="id" type="string"/>
+        <element hint="sys_id of the source record" label="Id" max_length="40" name="id" read_only="true" type="string"/>
         <element label="Instance" max_length="1024" name="instance" type="url"/>
         <element label="Instance" max_length="40" name="instance_code" type="string"/>
         <element label="Name" max_length="80" name="name" type="workflow"/>

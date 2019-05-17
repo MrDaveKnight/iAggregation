@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
     <element label="Queue Tables" max_length="40" name="x_snc_iagg_queue_tables" type="collection">
-        <element label="Meta" mandatory="true" max_length="32" name="meta" reference="sys_db_object" reference_qual="javascript: new Utils.getTargetRefQual(current);" type="reference" use_reference_qualifier="advanced"/>
+        <element choice="1" label="Type" max_length="40" name="base_classification" read_only="true" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Task" sequence="0" value="task"/>
+                <element inactive_on_update="false" label="SLA" sequence="1" value="task_sla"/>
+                <element inactive_on_update="false" label="User" sequence="2" value="sys_user"/>
+            </choice>
+        </element>
+        <element attributes="allow_public=true" label="Meta" mandatory="true" max_length="32" name="meta" reference="sys_db_object" reference_qual="javascript: new x_snc_iagg.Utils().getTargetRefQual(current.source);&#13;&#10;" type="reference" use_reference_qualifier="advanced"/>
         <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
         <element choice="1" label="Source" mandatory="true" max_length="40" name="source" type="choice">
             <choice>
@@ -9,13 +16,6 @@
                 <element dependent_value="User" inactive_on_update="false" label="User (sys_user)" sequence="1" value="sys_user"/>
                 <element dependent_value="Task" inactive_on_update="false" label="Problem (problem)" sequence="2" value="problem"/>
                 <element dependent_value="Task" inactive_on_update="false" label="Change (change_request)" sequence="3" value="change_request"/>
-            </choice>
-        </element>
-        <element calculation="(function calculatedFieldValue(current) { &#13;&#10;&#9;&#13;&#10;})(current);" choice="1" label="Type" max_length="40" name="type" read_only="true" type="choice">
-            <choice>
-                <element inactive_on_update="false" label="Task" sequence="0" value="task"/>
-                <element inactive_on_update="false" label="SLA" sequence="1" value="task_sla"/>
-                <element inactive_on_update="false" label="User" sequence="2" value="sys_user"/>
             </choice>
         </element>
         <index name="index">

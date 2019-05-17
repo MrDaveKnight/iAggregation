@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update>
-    <sys_documentation element="display" label="Display" language="en" table="x_snc_iagg_user_meta">
+    <sys_documentation element="base_classification" label="Type" language="en" table="x_snc_iagg_queue_tables">
         <sys_documentation action="INSERT_OR_UPDATE">
-            <element>display</element>
+            <element>base_classification</element>
             <help/>
             <hint/>
-            <label>Display</label>
+            <label>Type</label>
             <language>en</language>
-            <name>x_snc_iagg_user_meta</name>
-            <plural>Displays</plural>
+            <name>x_snc_iagg_queue_tables</name>
+            <plural>Types</plural>
             <sys_class_name>sys_documentation</sys_class_name>
             <sys_created_by>dave.knight</sys_created_by>
-            <sys_created_on>2019-05-15 12:18:49</sys_created_on>
+            <sys_created_on>2019-05-16 22:29:22</sys_created_on>
             <sys_customer_update>false</sys_customer_update>
-            <sys_id>a2a32cfb4f597b40ea338e328110c714</sys_id>
+            <sys_id>37f8bb044fa1fb40ea338e328110c7c7</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_name>Display</sys_name>
+            <sys_name>Type</sys_name>
             <sys_package display_value="iAggregation Base" source="x_snc_iagg">e40a5da74f117b40ea338e328110c7c0</sys_package>
             <sys_policy/>
             <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
             <sys_scope display_value="iAggregation Base">e40a5da74f117b40ea338e328110c7c0</sys_scope>
-            <sys_update_name>sys_documentation_x_snc_iagg_user_meta_display_en</sys_update_name>
+            <sys_update_name>sys_documentation_x_snc_iagg_queue_tables_base_classification_en</sys_update_name>
             <sys_updated_by>dave.knight</sys_updated_by>
-            <sys_updated_on>2019-05-15 12:18:49</sys_updated_on>
+            <sys_updated_on>2019-05-16 22:29:22</sys_updated_on>
             <url/>
             <url_target/>
         </sys_documentation>

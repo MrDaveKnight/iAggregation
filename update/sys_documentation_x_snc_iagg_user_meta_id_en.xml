@@ -3,7 +3,7 @@
         <sys_documentation action="INSERT_OR_UPDATE">
             <element>id</element>
             <help/>
-            <hint/>
+            <hint>sys_id of the source record</hint>
             <label>Id</label>
             <language>en</language>
             <name>x_snc_iagg_user_meta</name>
@@ -13,7 +13,7 @@
             <sys_created_on>2019-05-15 12:18:49</sys_created_on>
             <sys_customer_update>false</sys_customer_update>
             <sys_id>a2a32cfb4f597b40ea338e328110c710</sys_id>
-            <sys_mod_count>0</sys_mod_count>
+            <sys_mod_count>1</sys_mod_count>
             <sys_name>Id</sys_name>
             <sys_package display_value="iAggregation Base" source="x_snc_iagg">e40a5da74f117b40ea338e328110c7c0</sys_package>
             <sys_policy/>
@@ -21,7 +21,7 @@
             <sys_scope display_value="iAggregation Base">e40a5da74f117b40ea338e328110c7c0</sys_scope>
             <sys_update_name>sys_documentation_x_snc_iagg_user_meta_id_en</sys_update_name>
             <sys_updated_by>dave.knight</sys_updated_by>
-            <sys_updated_on>2019-05-15 12:18:49</sys_updated_on>
+            <sys_updated_on>2019-05-17 00:54:37</sys_updated_on>
             <url/>
             <url_target/>
         </sys_documentation>

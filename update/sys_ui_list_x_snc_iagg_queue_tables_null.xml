@@ -3,62 +3,47 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>number</element>
-            <list_id display_value="x_snc_iagg_queue_tables" element="NULL" name="x_snc_iagg_queue_tables" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">6c4636fb4f11bb40ea338e328110c71a</list_id>
+            <list_id display_value="x_snc_iagg_queue_tables" element="NULL" name="x_snc_iagg_queue_tables" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">18ab08d04fe1fb40ea338e328110c730</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>0</position>
             <sum>false</sum>
             <sys_created_by>dave.knight</sys_created_by>
-            <sys_created_on>2019-05-15 22:59:18</sys_created_on>
-            <sys_id>a84636fb4f11bb40ea338e328110c71b</sys_id>
+            <sys_created_on>2019-05-16 23:50:46</sys_created_on>
+            <sys_id>d4ab08d04fe1fb40ea338e328110c731</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>dave.knight</sys_updated_by>
-            <sys_updated_on>2019-05-15 22:59:18</sys_updated_on>
+            <sys_updated_on>2019-05-16 23:50:46</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>meta</element>
-            <list_id display_value="x_snc_iagg_queue_tables" element="NULL" name="x_snc_iagg_queue_tables" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">6c4636fb4f11bb40ea338e328110c71a</list_id>
+            <element>source</element>
+            <list_id display_value="x_snc_iagg_queue_tables" element="NULL" name="x_snc_iagg_queue_tables" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">18ab08d04fe1fb40ea338e328110c730</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>1</position>
             <sum>false</sum>
             <sys_created_by>dave.knight</sys_created_by>
-            <sys_created_on>2019-05-15 22:59:18</sys_created_on>
-            <sys_id>204636fb4f11bb40ea338e328110c71c</sys_id>
+            <sys_created_on>2019-05-16 23:50:46</sys_created_on>
+            <sys_id>54ab08d04fe1fb40ea338e328110c73e</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>dave.knight</sys_updated_by>
-            <sys_updated_on>2019-05-15 22:59:18</sys_updated_on>
+            <sys_updated_on>2019-05-16 23:50:46</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
-            <element>source</element>
-            <list_id display_value="x_snc_iagg_queue_tables" element="NULL" name="x_snc_iagg_queue_tables" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">6c4636fb4f11bb40ea338e328110c71a</list_id>
+            <element>meta</element>
+            <list_id display_value="x_snc_iagg_queue_tables" element="NULL" name="x_snc_iagg_queue_tables" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">18ab08d04fe1fb40ea338e328110c730</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>2</position>
             <sum>false</sum>
             <sys_created_by>dave.knight</sys_created_by>
-            <sys_created_on>2019-05-15 22:59:18</sys_created_on>
-            <sys_id>a04636fb4f11bb40ea338e328110c71c</sys_id>
+            <sys_created_on>2019-05-16 23:50:46</sys_created_on>
+            <sys_id>d4ab08d04fe1fb40ea338e328110c73e</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_updated_by>dave.knight</sys_updated_by>
-            <sys_updated_on>2019-05-15 22:59:18</sys_updated_on>
-        </sys_ui_list_element>
-        <sys_ui_list_element action="INSERT_OR_UPDATE">
-            <average_value>false</average_value>
-            <element>type</element>
-            <list_id display_value="x_snc_iagg_queue_tables" element="NULL" name="x_snc_iagg_queue_tables" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">6c4636fb4f11bb40ea338e328110c71a</list_id>
-            <max_value>false</max_value>
-            <min_value>false</min_value>
-            <position>3</position>
-            <sum>false</sum>
-            <sys_created_by>dave.knight</sys_created_by>
-            <sys_created_on>2019-05-15 22:59:18</sys_created_on>
-            <sys_id>244636fb4f11bb40ea338e328110c71c</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_updated_by>dave.knight</sys_updated_by>
-            <sys_updated_on>2019-05-15 22:59:18</sys_updated_on>
+            <sys_updated_on>2019-05-16 23:50:46</sys_updated_on>
         </sys_ui_list_element>
         <sys_ui_list action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
@@ -72,11 +57,11 @@
             <sum>false</sum>
             <sys_class_name>sys_ui_list</sys_class_name>
             <sys_created_by>dave.knight</sys_created_by>
-            <sys_created_on>2019-05-15 22:59:18</sys_created_on>
+            <sys_created_on>2019-05-16 23:50:46</sys_created_on>
             <sys_customer_update>false</sys_customer_update>
             <sys_domain>global</sys_domain>
             <sys_domain_path>/</sys_domain_path>
-            <sys_id>6c4636fb4f11bb40ea338e328110c71a</sys_id>
+            <sys_id>18ab08d04fe1fb40ea338e328110c730</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_name>x_snc_iagg_queue_tables</sys_name>
             <sys_package display_value="iAggregation Base" source="x_snc_iagg">e40a5da74f117b40ea338e328110c7c0</sys_package>
@@ -85,7 +70,7 @@
             <sys_scope display_value="iAggregation Base">e40a5da74f117b40ea338e328110c7c0</sys_scope>
             <sys_update_name>sys_ui_list_x_snc_iagg_queue_tables_null</sys_update_name>
             <sys_updated_by>dave.knight</sys_updated_by>
-            <sys_updated_on>2019-05-15 22:59:18</sys_updated_on>
+            <sys_updated_on>2019-05-16 23:50:46</sys_updated_on>
             <sys_user/>
             <view display_value="Default view" name="NULL">Default view</view>
             <view_name/>
